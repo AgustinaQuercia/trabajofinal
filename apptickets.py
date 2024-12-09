@@ -1,7 +1,13 @@
- tickets = pickle.load(file)
-except (FileNotFoundError, EOFError):
-    tickets = {}  
+import pickle
+import random
 
+TICKET_FILE = "tickets.pkl"
+
+try:
+    with open(TICKET_FILE, "rb") as file:
+        tickets = pickle.load(file)
+except (FileNotFoundError, EOFError):
+    tickets = {}
 def guardar_tickets():
     """Guarda los tickets en un archivo usando pickle."""
     with open(TICKET_FILE, "wb") as file:
